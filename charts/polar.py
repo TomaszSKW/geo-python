@@ -17,7 +17,7 @@ def create_polar(df_hours):
         df_hours_day = df_hours[df_hours['data'] == day]
 
         r_biegunowa=[]
-        for i in df_hours_day['residua[nm/h]']:
+        for i in df_hours_day['residua']:
             r_biegunowa.append(i)
         #r_biegunowa.append(r_biegunowa[0])   #manualne połączenie pierwszego i ostatniego punktu
 
