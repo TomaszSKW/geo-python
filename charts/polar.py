@@ -3,7 +3,7 @@ import matplotlib.pyplot as plot
 import numpy as np
 import seaborn as sns
 from matplotlib.colors import Colormap, ListedColormap
-from os import path
+# from os import path
 #outpath = r"C:\Users\user\Desktop\chyba_wazne\Zuza\python_kodzik\wykresy\polar_155"
 
 def create_polar(df_hours):
@@ -19,7 +19,7 @@ def create_polar(df_hours):
         r_biegunowa=[]
         for i in df_hours_day['residua[nm/h]']:
             r_biegunowa.append(i)
-        #r_biegunowa.append(r_biegunowa[0])
+        #r_biegunowa.append(r_biegunowa[0])   #manualne połączenie pierwszego i ostatniego punktu
 
         ax.set_xticks(np.linspace(0, 2*np.pi, 24, endpoint=False))
         ax.set_theta_zero_location('N', offset=0.0)
