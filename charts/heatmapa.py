@@ -8,6 +8,7 @@ def create_heatmap(df):
     df_hours_heatmap = df.groupby(by = ['godzina', 'data']).mean(numeric_only=True)['residua'].unstack()
     plot.figure(figsize = (10,7))
     sns.heatmap(df_hours_heatmap, cmap = 'coolwarm')
+
     if 1 in df['miesiac'].values:
         plot.title('Styczeń')
     elif 2 in df['miesiac'].values:
@@ -32,6 +33,5 @@ def create_heatmap(df):
         plot.title('Listopad')
     elif 12 in df['miesiac'].values:
         plot.title('Grudzień')
-    new_x = [val + 1 for val in df_hours_heatmap]   # Zaktualizowanie wartości osi x
-    plot.gca().set_xticks(new_x)   # Aktualizacja wartości osi x na wykresie
+        
     plot.show()
