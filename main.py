@@ -4,12 +4,14 @@ from charts.spektogram import create_spectogram
 from charts.periodogram import create_periodogram
 from charts.heatmapa import create_heatmap
 from charts.statystyki import*
+from charts.polar import create_polar
+from charts.colorbar import create_colorbar
 
 
-path_155 = "./data/gphone-155_2020"
-# path_157 = "./data/gphone-157_2020"
+path_155 = "./data/gPhoneX_155_2020"
+# path_157 = "./data/gphone_157_2020"
 
-df = download_data_from_files(path_155, 0, 12)
+df = download_data_from_files(path_155, 0, 7)
 # df = download_data_from_files(path_157, 0, 3)
 
 df = calculate_frequency(df)
@@ -20,9 +22,9 @@ df_minutes = create_grouped_df(df, ['data', 'godzina', 'minuta'])
 df_minutes['czas'] = df_minutes['data'] + pd.to_timedelta(df_minutes['godzina'], 'hour') + pd.to_timedelta(df_minutes['minuta'], 'minute')
 df_minutes = calculate_frequency(df_minutes)
 
-# df_hours = create_grouped_df(df, ['data', 'godzina'])
-# df_hours['czas'] = df_hours['data'] + pd.to_timedelta(df_hours['godzina'], 'hour')
-#df_hours = calculate_frequency(df_hours)
+df_hours = create_grouped_df(df, ['data', 'godzina'])
+df_hours['czas'] = df_hours['data'] + pd.to_timedelta(df_hours['godzina'], 'hour')
+df_hours = calculate_frequency(df_hours)
 
 # df_days = create_grouped_df(df, ['data'])
 # df_days['czas'] = df_days['data']
@@ -40,7 +42,9 @@ df_month = calculate_frequency(df_month)
 
 # create_spectogram(df_minutes)
 # create_periodogram(df)
-# create_heatmap(df_minutes)
+create_heatmap(df_minutes)
+# create_polar(df_hours)
+# create_colorbar(df_hours, 30)
 
 # calculate_mean(df['miesiac'], df['przyspieszenie'])
 # calculate_roll(df['miesiac'], df['przyspieszenie'])
@@ -49,4 +53,4 @@ df_month = calculate_frequency(df_month)
 # calculate_centr_std(df['residua'], df_minutes['residua'])
 # calculate_corelation(df['residua'])
 # calculate_quantile(df['residua'])
-calculate_body_mass(df['residua'])
+# calculate_body_mass(df['residua'])
