@@ -27,43 +27,33 @@ def create_colorbar(df_hours, df, liczbadni):
         cmap.set_bad(color='gray', alpha=0.3)
         plot.imshow(dwuwymiar, cmap='Blues', interpolation='none')
     plot.colorbar()
+
     if 1 in df['miesiac'].values:
         plot.title('Styczeń')
-        plot.gca().set_xticks(list(range(1, 32)))
     elif 2 in df['miesiac'].values:
         plot.title('Luty')
-        plot.gca().set_xticks(list(range(1, 30)))
     elif 3 in df['miesiac'].values:
         plot.title('Marzec')
-        plot.gca().set_xticks(list(range(1, 32)))
-    # elif 4 in df['miesiac'].values:
-    #     plot.title('Kwiecień')
-    #     new_x = list(range(1, 31))
-    # elif 5 in df['miesiac'].values:
-    #     plot.title('Maj')
-    #     new_x = list(range(1, 32))
-    # elif 6 in df['miesiac'].values:
-    #     plot.title('Czerwiec')
-    #     new_x = list(range(1, 31))
-    # elif 7 in df['miesiac'].values:
-    #     plot.title('Lipiec')
-    #     new_x = list(range(1, 32))
-    # elif 8 in df['miesiac'].values:
-    #     plot.title('Sierpień')
-    #     new_x = list(range(1, 31))
-    # elif 9 in df['miesiac'].values:
-    #     plot.title('Wrzesień')
-    #     new_x = list(range(1, 31))
-    # elif 10 in df['miesiac'].values:
-    #     plot.title('Październik')
-    #     new_x = list(range(1, 32))
-    # elif 11 in df['miesiac'].values:
-    #     plot.title('Listopad')
-    #     new_x = list(range(1, 31))
-    # elif 12 in df['miesiac'].values:
-    #     plot.title('Grudzień')
-    #     new_x = list(range(1, 32))
-    # plot.gca().set_xticks(new_x)   # Aktualizacja wartości osi x na wykresie
+    elif 4 in df['miesiac'].values:
+        plot.title('Kwiecień')
+    elif 5 in df['miesiac'].values:
+        plot.title('Maj')
+    elif 6 in df['miesiac'].values:
+        plot.title('Czerwiec')
+    elif 7 in df['miesiac'].values:
+        plot.title('Lipiec')
+    elif 8 in df['miesiac'].values:
+        plot.title('Sierpień')
+    elif 9 in df['miesiac'].values:
+        plot.title('Wrzesień')
+    elif 10 in df['miesiac'].values:
+        plot.title('Październik')
+    elif 11 in df['miesiac'].values:
+        plot.title('Listopad')
+    elif 12 in df['miesiac'].values:
+        plot.title('Grudzień')
+        
+    # plot.gca().set_xticks(list(range(1, 32)))   #ręczne podpisanie osi x
     plot.xlabel('Dzień')
     plot.ylabel('Godzina')    
     #plot.savefig(path.join(outpath, "colorbar155_{0}.png".format(day)))
