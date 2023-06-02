@@ -8,5 +8,5 @@ def create_heatmap(df):
     df_hours_heatmap = df.groupby(by = ['godzina', 'data']).mean(numeric_only=True)['residua'].unstack()
     plot.figure(figsize = (10,7))
     sns.heatmap(df_hours_heatmap, cmap = 'coolwarm')
-    plot.title("heatmap")
+    plot.title(df['czas'].dt.month)
     plot.show()
