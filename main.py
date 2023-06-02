@@ -11,7 +11,7 @@ from charts.colorbar import create_colorbar
 path_155 = "./data/gPhoneX_155_2020"
 # path_157 = "./data/gphone_157_2020"
 
-df = download_data_from_files(path_155, 0, 7)
+df = download_data_from_files(path_155, 61, 91)
 # df = download_data_from_files(path_157, 0, 3)
 
 df = calculate_frequency(df)
@@ -42,9 +42,9 @@ df_month = calculate_frequency(df_month)
 
 # create_spectogram(df_minutes)
 # create_periodogram(df)
-create_heatmap(df_minutes)
+# create_heatmap(df_minutes)
 # create_polar(df_hours)
-# create_colorbar(df_hours, 30)
+create_colorbar(df_hours, df, 30)
 
 # calculate_mean(df['miesiac'], df['przyspieszenie'])
 # calculate_roll(df['miesiac'], df['przyspieszenie'])
