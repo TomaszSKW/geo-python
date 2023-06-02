@@ -3,7 +3,7 @@ import matplotlib.pyplot as plot
 import numpy as np
 import seaborn as sns
 from matplotlib.colors import Colormap, ListedColormap
-from os import path
+#from os import path
 #outpath = r"C:\Users\user\Desktop\chyba_wazne\Zuza\python_kodzik\wykresy\colorbar_155"
 
 def create_colorbar(df_hours, liczbadni):
@@ -18,7 +18,7 @@ def create_colorbar(df_hours, liczbadni):
         qq = 0
         while q <= liczbadni-1:
             while qq <= 23:
-                dwuwymiar[qq].append(df_hours['residua[nm/h]'][qq+q*24])
+                dwuwymiar[qq].append(df_hours['czestotliwosc[Hz]'][qq+q*24])
                 qq += 1
             qq = 0
             q += 1
@@ -27,7 +27,7 @@ def create_colorbar(df_hours, liczbadni):
         cmap.set_bad(color='gray', alpha=0.3)
         plot.imshow(dwuwymiar, cmap='Blues', interpolation='none')
     plot.colorbar()
-    plot.title('Grudzień')
+    plot.title('styczeń')
     plot.xlabel('Dzień')
     plot.ylabel('Godzina')
     #plot.savefig(path.join(outpath, "colorbar155_{0}.png".format(day)))
