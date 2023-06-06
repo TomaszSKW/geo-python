@@ -44,7 +44,7 @@ df_month = calculate_frequency(df_month)
 # create_periodogram(df)
 # create_heatmap(df_minutes)
 # create_polar(df_hours)
-create_colorbar(df_hours, df, 30)
+# create_colorbar(df_hours, df, 30)
 
 # calculate_mean(df['miesiac'], df['przyspieszenie'])
 # calculate_roll(df['miesiac'], df['przyspieszenie'])
