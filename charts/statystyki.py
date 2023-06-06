@@ -40,7 +40,7 @@ df_stats = df_month.describe()
 # plot.show()
 
 ############średnia krocząca
-df_step_mean = df_month['czestotliwosc[Hz]'].rolling(window=1, step = None)
+df_step_mean = df_month['przyspieszenie'].rolling(window=1, step = None)
 # print("średnią minimalną wg miesiecy:", df_step_mean.min())
 # print("średnia maksymalną wg miesiecy:", df_step_mean.max())
 
