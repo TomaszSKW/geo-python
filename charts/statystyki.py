@@ -40,7 +40,7 @@ df_stats = df_month.describe()
 # plot.show()
 
 ############średnia krocząca
-df_step_mean = df_month['przyspieszenie'].rolling(window=1, step = None)
+df_step_mean = df_month['przyspieszenie'].rolling(window=1, step = None).mean()
 # print("średnią minimalną wg miesiecy:", df_step_mean.min())
 # print("średnia maksymalną wg miesiecy:", df_step_mean.max())
 
@@ -51,6 +51,15 @@ df_step_mean = df_month['przyspieszenie'].rolling(window=1, step = None)
 # plot.ylabel('Frequency')
 # plot.title("Rozkład średnich miesięcznych")
 # plot.show()
+
+df = pd.DataFrame({'data': df_month['miesiac'], 'średnia krocząca': df_step_mean})
+sns.lineplot(data=data, x='data', y='przyspieszenie', label='pomiar grawimetryczny')
+sns.lineplot(data=df, x='data', y='średnia krocząca', label='średnia krocząca miesięcy')
+plot.xlabel('data')
+plot.ylabel('przyspieszenie')
+plt.legend()
+plt.show()
+
 
 ##########mediana
 df_median = df_days.groupby(['data']).median(numeric_only=True).reset_index()
