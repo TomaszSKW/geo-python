@@ -18,9 +18,9 @@ df_minutes = pd.read_csv('data/df_minutes.csv', sep=';', decimal=',')
 # print(df_stats)
 # df_stats = df_hours.describe()
 # print(df_stats)
-# df_stats = df_days.describe()
-# print(df_stats)
-df_stats = df_month.describe()
+df_stats = df_days.describe()
+print(df_stats)
+# df_stats = df_month.describe()
 # print(df_stats)
 
 
