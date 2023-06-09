@@ -28,7 +28,7 @@ df_days = pd.read_csv('data/df_days.csv', sep=';', decimal=',')
 #####SREDNIA
 
 #srednia dla dni 
-df_mean = df_days.groupby(['miesiac']).mean(numeric_only=True).reset_index()
+df_mean = df_days.groupby(['data']).mean(numeric_only=True).reset_index()
 print("dzień ze średnią maksymalną:", df_mean.max())
 print("dzień ze średnią minimalną:", df_mean.min())
 
