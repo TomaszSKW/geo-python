@@ -12,7 +12,7 @@ from charts.statystyki_def import*
 path_157 = "./data/gPhoneX_157_2020"
 
 # df = download_data_from_files(path_155, 0, 2)
-df = download_data_from_files(path_157, 0, 365)
+df = download_data_from_files(path_157, 0, 120)
 
 df = calculate_frequency(df)
 # # print(df)
@@ -26,17 +26,17 @@ df = calculate_frequency(df)
 # df_hours['czas'] = df_hours['data'] + pd.to_timedelta(df_hours['godzina'], 'hour')
 # df_hours = calculate_frequency(df_hours)
 
-# df_days = create_grouped_df(df, ['data'])
-# df_days['czas'] = df_days['data']
-# df_days = calculate_frequency(df_days)
+df_days = create_grouped_df(df, ['data'])
+df_days['czas'] = df_days['data']
+df_days = calculate_frequency(df_days)
 
 # df_month = create_grouped_df(df, ['miesiac', 'rok'])
 # df_month = calculate_frequency(df_month)
 
-df.to_csv('data/df.csv', index=False)
+# df.to_csv('data/df.csv', index=False)
 # df_minutes.to_csv('./data/df_minutes3.csv', sep=';', decimal=',', index=False)
 # df_hours.to_csv('./data/df_hours3.csv', index=False)
-# df_days.to_csv('./data/df_days3.csv', index=False)
+df_days.to_csv('./data/df_days11.csv', sep=';', decimal=',', index=False)
 # df_month.to_csv('./data/df_month3.csv', index=False)
 
 print('gotowe')
@@ -46,6 +46,7 @@ print('gotowe')
 # create_heatmap(df_minutes)
 # create_colorbar(df_hours, 31)
 # create_polar(df_hours)
+
 # calculate_mean(df['miesiac'], df['przyspieszenie'])
 # calculate_roll(df['miesiac'], df['przyspieszenie'])
 # calculate_std(df['przyspieszenie'])
