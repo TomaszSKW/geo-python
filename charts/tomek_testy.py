@@ -6,13 +6,13 @@ import statsmodels as sm
 import csv
 
 #wczytanie csv dla miesiecy
-df_month = pd.read_csv('data/df_month.csv', sep=';', decimal=',')
+# df_month = pd.read_csv('data/df_month.csv', sep=';', decimal=',')
 #wczytanie csv dla dni
 df_days = pd.read_csv('data/df_days.csv', sep=';', decimal=',')
 #wczytanie csv dla godzin
-df_hours = pd.read_csv('data/df_hours.csv', sep=';', decimal=',')
+# df_hours = pd.read_csv('data/df_hours.csv', sep=';', decimal=',')
 #wczytanie csv dla minut
-df_minutes = pd.read_csv('data/df_minutes.csv', sep=';', decimal=',')
+# df_minutes = pd.read_csv('data/df_minutes.csv', sep=';', decimal=',')
 
 #analiza wstepna
 # df_stats = df_minutes.describe()
@@ -28,9 +28,9 @@ df_minutes = pd.read_csv('data/df_minutes.csv', sep=';', decimal=',')
 #####SREDNIA
 
 #srednia dla dni 
-# df_mean = df_month.groupby(['miesiac']).mean(numeric_only=True).reset_index()
-# print("dzień ze średnią maksymalną:", df_mean.max())
-# print("dzień ze średnią minimalną:", df_mean.min())
+df_mean = df_days.groupby(['miesiac']).mean(numeric_only=True).reset_index()
+print("dzień ze średnią maksymalną:", df_mean.max())
+print("dzień ze średnią minimalną:", df_mean.min())
 
 # print(max(df_mean['przyspieszenie']))
 # print(min(df_mean['przyspieszenie']))
@@ -48,11 +48,9 @@ df_minutes = pd.read_csv('data/df_minutes.csv', sep=';', decimal=',')
 # plot.show()
 
 ###########średnia krocząca
-df_step_mean = df_month['przyspieszenie'].rolling(window=3, step = None)
+# df_step_mean = df_month['przyspieszenie'].rolling(window=3, step = None)
 # print("średnią minimalną wg miesiecy:", df_step_mean.min())
 # print("średnia maksymalną wg miesiecy:", df_step_mean.max())
-# print('ogólnie', df_step_mean)
-
 
 # ####WYKRES ZE ŚREDNIĄ KROCZĄCĄ
 # plot.figure(figsize = (7,5))
@@ -62,30 +60,31 @@ df_step_mean = df_month['przyspieszenie'].rolling(window=3, step = None)
 # plot.title("Rozkład średnich miesięcznych")
 # plot.show()
 # Wczytaj istniejący plik CSV
-with open('data/df_month_step.csv', 'r') as file:
-    lines = file.readlines()
+# with open('data/df_month_step.csv', 'r') as file:
+#     lines = file.readlines()
 
-# Zmiana separatora (zakładając, że aktualny separator to przecinek ',')
-new_separator = ';'
-lines = [line.replace(',', new_separator) for line in lines]
+# # Zmiana separatora (zakładając, że aktualny separator to przecinek ',')
+# new_separator = ';'
+# lines = [line.replace(',', new_separator) for line in lines]
 
-# Zapisz zmienione dane do pliku CSV
-with open('df_month_step.csv', 'w', newline='') as file:
-    writer = list(csv.writer(file, delimiter=new_separator))
-    writer.writerows(lines)
+# # Zapisz zmienione dane do pliku CSV
+# with open('df_month_step.csv', 'w', newline='') as file:
+#     writer = list(csv.writer(file, delimiter=new_separator))
+#     writer.writerows(lines)
 
 
-df_step = pd.DataFrame({'data': writer, 'średnia krocząca': df_step_mean, 'przyspieszenie': writer['przyspieszenie']})
-sns.lineplot( x='data', y='przyspieszenie', label='pomiar grawimetryczny')
-sns.lineplot( x='data', y='średnia krocząca', label='średnia krocząca miesięcy')
-plot.xlabel('data')
-plot.ylabel('przyspieszenie')
-plot.legend()
-plot.show()
+# df_step = pd.DataFrame({'data': writer, 'średnia krocząca': df_step_mean, 'przyspieszenie': writer['przyspieszenie']})
+# sns.lineplot( x='data', y='przyspieszenie', label='pomiar grawimetryczny')
+# sns.lineplot( x='data', y='średnia krocząca', label='średnia krocząca miesięcy')
+# plot.xlabel('data')
+# plot.ylabel('przyspieszenie')
+# plot.legend()
+# plot.show()
 
 ##########mediana
 df_median = df_days.groupby(['data']).median(numeric_only=True).reset_index()
-# print(max(df_median['przyspieszenie']))
+print('mediana max', max(df_median['przyspieszenie']))
+print('mediana min', min(df_median['przyspieszenie']))
 
 
 ###WYKRES DLA MEDIANY
