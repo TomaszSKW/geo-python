@@ -12,7 +12,7 @@ from charts.statystyki_def import*
 path_157 = "./data/gPhoneX_157_2020"
 
 # df = download_data_from_files(path_155, 0, 2)
-df = download_data_from_files(path_157, 0, 120)
+df = download_data_from_files(path_157, 0, 365)
 
 df = calculate_frequency(df)
 # # print(df)
