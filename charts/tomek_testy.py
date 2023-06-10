@@ -6,9 +6,9 @@ import statsmodels as sm
 import csv
 
 #wczytanie csv dla miesiecy
-# df_month = pd.read_csv('data/df_month.csv', sep=';', decimal=',')
+df_month = pd.read_csv('data/df_month_k.csv', sep=';', decimal=',')
 #wczytanie csv dla dni
-df_days = pd.read_csv('data/df_days11.csv', sep=';', decimal=',')
+# df_days = pd.read_csv('data/df_days_r.csv', sep=';', decimal=',')
 #wczytanie csv dla godzin
 # df_hours = pd.read_csv('data/df_hours.csv', sep=';', decimal=',')
 #wczytanie csv dla minut
@@ -28,9 +28,9 @@ df_days = pd.read_csv('data/df_days11.csv', sep=';', decimal=',')
 #####SREDNIA
 
 #srednia dla dni 
-df_mean = df_days.groupby(['przyspieszenie']).mean(numeric_only=True).reset_index()
-print("dzień ze średnią maksymalną:", df_mean.max())
-print("dzień ze średnią minimalną:", df_mean.min())
+# df_mean = df_days.groupby(['przyspieszenie']).mean(numeric_only=True).reset_index()
+# print("dzień ze średnią maksymalną:", df_mean.max())
+# print("dzień ze średnią minimalną:", df_mean.min())
 
 # print(max(df_mean['przyspieszenie']))
 # print(min(df_mean['przyspieszenie']))
@@ -82,9 +82,9 @@ print("dzień ze średnią minimalną:", df_mean.min())
 # plot.show()
 
 ##########mediana
-df_median = df_days.groupby(['przyspieszenie']).median(numeric_only=True).reset_index()
-print('mediana max', max(df_median['przyspieszenie']))
-print('mediana min', min(df_median['przyspieszenie']))
+# df_median = df_days.groupby(['przyspieszenie']).median(numeric_only=True).reset_index()
+# print('mediana max', max(df_median['przyspieszenie']))
+# print('mediana min', min(df_median['przyspieszenie']))
 
 
 ###WYKRES DLA MEDIANY
@@ -126,23 +126,23 @@ print('mediana min', min(df_median['przyspieszenie']))
 #sns.lmplot(x="przyspieszenie", y="liczba", hue="smoker", col="time", data=df_month);
 
 ##########odchylenie_standardowe
-# std = df_month.std()
-# print(std)
+std = df_month.std()
+print('odchylenie standardowe', std)
 
 ##########wariancja
-# var = df_month.var()
-# print(var)
+var = df_month.var()
+print('wariancja', var)
 
 ########odchylenie_centralne
-# std2 = df_month['przyspieszenie'].std()
-# mean2 = df_month['przyspieszenie'].mean()
+std2 = df_month['przyspieszenie'].std()
+mean2 = df_month['przyspieszenie'].mean()
 
-# stdc = mean2 - std2
-# print(stdc)
+stdc = mean2 - std2
+print('odchylenie centralne', stdc)
 
 #########KORELACJA
-# cor = df_month[['miesiac', 'raw[nm/s2]', 'cisnienie[mBar]', 'residua', 'przyspieszenie', 'czestotliwosc[Hz]']].corr()
-# print(cor)
+cor = df_month[['miesiac', 'raw[nm/s2]', 'cisnienie[mBar]', 'residua', 'przyspieszenie', 'czestotliwosc[Hz]']].corr()
+print('korelacja', cor)
 # save_string = cor.to_string(header=False, index=False)
 
 # with open('korelacja.txt', 'w') as f:
