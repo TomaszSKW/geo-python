@@ -86,7 +86,7 @@ def calculate_frequency(df):
 
     # Przeliczenie jednostek przyspieszenia z nm/s^2 na mGal
     df['przyspieszenie'] = df['residua'] / (10**4)
-    df['przyspieszenie']= np.log(df['przyspieszenie'])
+    #df['przyspieszenie']= np.log(df['przyspieszenie'])
     przyspieszenie = df['przyspieszenie'].values
 
     # Obliczenie transformaty Fouriera
