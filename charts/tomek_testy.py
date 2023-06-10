@@ -6,9 +6,9 @@ import statsmodels as sm
 import csv
 
 #wczytanie csv dla miesiecy
-df_month = pd.read_csv('data/df_month_k.csv', sep=';', decimal=',')
+df_month = pd.read_csv('data/df_month_r.csv', sep=';', decimal=',')
 #wczytanie csv dla dni
-# df_days = pd.read_csv('data/df_days_r.csv', sep=';', decimal=',')
+df_days = pd.read_csv('data/df_days_r.csv', sep=';', decimal=',')
 #wczytanie csv dla godzin
 # df_hours = pd.read_csv('data/df_hours.csv', sep=';', decimal=',')
 #wczytanie csv dla minut
@@ -28,7 +28,7 @@ df_month = pd.read_csv('data/df_month_k.csv', sep=';', decimal=',')
 #####SREDNIA
 
 #srednia dla dni 
-# df_mean = df_days.groupby(['przyspieszenie']).mean(numeric_only=True).reset_index()
+# df_mean = df_days.groupby(['data']).mean(numeric_only=True).reset_index()
 # print("dzień ze średnią maksymalną:", df_mean.max())
 # print("dzień ze średnią minimalną:", df_mean.min())
 
@@ -43,6 +43,13 @@ df_month = pd.read_csv('data/df_month_k.csv', sep=';', decimal=',')
 # plot.figure(figsize = (6,3))
 # plot.scatter(df_month['miesiac'], df_month['przyspieszenie'])
 # plot.xlabel('Miesiac')
+# plot.ylabel('Przyspieszenie')
+# plot.title("Rozkład średnich miesięcznych")
+# plot.show()
+
+# plot.figure(figsize = (10,3))
+# plot.scatter(df_days['data'], df_days['przyspieszenie'])
+# plot.xlabel('Dzień')
 # plot.ylabel('Przyspieszenie')
 # plot.title("Rozkład średnich miesięcznych")
 # plot.show()
@@ -82,21 +89,22 @@ df_month = pd.read_csv('data/df_month_k.csv', sep=';', decimal=',')
 # plot.show()
 
 ##########mediana
-# df_median = df_days.groupby(['przyspieszenie']).median(numeric_only=True).reset_index()
+df_median = df_days.groupby(['data']).median(numeric_only=True).reset_index()
+print(df_median)
 # print('mediana max', max(df_median['przyspieszenie']))
 # print('mediana min', min(df_median['przyspieszenie']))
 
 
 ###WYKRES DLA MEDIANY
-# plot.figure(figsize = (10,6))
-# plot.scatter(df_median['data'], df_median['przyspieszenie'])
-# #plot.plot(df_month['residua'])
-# plot.gca().xaxis.set_major_locator(plot.MaxNLocator(14))
-# plot.xticks(rotation=45, fontweight='light',  fontsize='x-small',)
-# plot.xlabel('Months')
-# plot.ylabel('Residua')
-# plot.title("Rozkład mediany według dni w ciągu roku")
-# plot.show()
+plot.figure(figsize = (10,6))
+plot.scatter(df_median['miesiac'], df_median['przyspieszenie'])
+#plot.plot(df_month['residua'])
+plot.gca().xaxis.set_major_locator(plot.MaxNLocator(14))
+plot.xticks(rotation=45, fontweight='light',  fontsize='x-small',)
+plot.xlabel('Months')
+plot.ylabel('Residua')
+plot.title("Rozkład mediany według dni w ciągu roku")
+plot.show()
 
 
 ##########kwantyle
@@ -126,23 +134,28 @@ df_month = pd.read_csv('data/df_month_k.csv', sep=';', decimal=',')
 #sns.lmplot(x="przyspieszenie", y="liczba", hue="smoker", col="time", data=df_month);
 
 ##########odchylenie_standardowe
-std = df_month.std()
-print('odchylenie standardowe', std)
+
+# std_month = df_month['przyspieszenie'].std()
+# std_day = df_days['przyspieszenie'].std()
+# std_hours = df_hours['przyspieszenie'].std()
+# print('odchylenie standardowe', std_month)
 
 ##########wariancja
-var = df_month.var()
-print('wariancja', var)
+# var_month = df_month['przyspieszenie'].var()
+# var_day = df_days['przyspieszenie'].var()
+# var_hours = df_hours['przyspieszenie'].var()
+# print('wariancja', var_month)
 
 ########odchylenie_centralne
-std2 = df_month['przyspieszenie'].std()
-mean2 = df_month['przyspieszenie'].mean()
+# std2 = df_month['przyspieszenie'].std()
+# mean2 = df_month['przyspieszenie'].mean()
 
-stdc = mean2 - std2
-print('odchylenie centralne', stdc)
+# stdc = mean2 - std2
+# print('odchylenie centralne', stdc)
 
 #########KORELACJA
-cor = df_month[['miesiac', 'raw[nm/s2]', 'cisnienie[mBar]', 'residua', 'przyspieszenie', 'czestotliwosc[Hz]']].corr()
-print('korelacja', cor)
+# cor = df_month[['miesiac', 'raw[nm/s2]', 'cisnienie[mBar]', 'residua', 'przyspieszenie', 'czestotliwosc[Hz]']].corr()
+# print('korelacja', cor)
 # save_string = cor.to_string(header=False, index=False)
 
 # with open('korelacja.txt', 'w') as f:
