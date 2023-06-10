@@ -8,7 +8,7 @@ import csv
 #wczytanie csv dla miesiecy
 # df_month = pd.read_csv('data/df_month.csv', sep=';', decimal=',')
 #wczytanie csv dla dni
-df_days = pd.read_csv('data/df_days.csv', sep=';', decimal=',')
+df_days = pd.read_csv('data/df_days11.csv', sep=';', decimal=',')
 #wczytanie csv dla godzin
 # df_hours = pd.read_csv('data/df_hours.csv', sep=';', decimal=',')
 #wczytanie csv dla minut
@@ -28,7 +28,7 @@ df_days = pd.read_csv('data/df_days.csv', sep=';', decimal=',')
 #####SREDNIA
 
 #srednia dla dni 
-df_mean = df_days.groupby(['data']).mean(numeric_only=True).reset_index()
+df_mean = df_days.groupby(['przyspieszenie']).mean(numeric_only=True).reset_index()
 print("dzień ze średnią maksymalną:", df_mean.max())
 print("dzień ze średnią minimalną:", df_mean.min())
 
@@ -82,7 +82,7 @@ print("dzień ze średnią minimalną:", df_mean.min())
 # plot.show()
 
 ##########mediana
-df_median = df_days.groupby(['data']).median(numeric_only=True).reset_index()
+df_median = df_days.groupby(['przyspieszenie']).median(numeric_only=True).reset_index()
 print('mediana max', max(df_median['przyspieszenie']))
 print('mediana min', min(df_median['przyspieszenie']))
 
@@ -134,16 +134,16 @@ print('mediana min', min(df_median['przyspieszenie']))
 # print(var)
 
 ########odchylenie_centralne
-std2 = df_month['przyspieszenie'].std()
-mean2 = df_month['przyspieszenie'].mean()
+# std2 = df_month['przyspieszenie'].std()
+# mean2 = df_month['przyspieszenie'].mean()
 
-stdc = mean2 - std2
+# stdc = mean2 - std2
 # print(stdc)
 
 #########KORELACJA
-cor = df_month[['miesiac', 'raw[nm/s2]', 'cisnienie[mBar]', 'residua', 'przyspieszenie', 'czestotliwosc[Hz]']].corr()
+# cor = df_month[['miesiac', 'raw[nm/s2]', 'cisnienie[mBar]', 'residua', 'przyspieszenie', 'czestotliwosc[Hz]']].corr()
 # print(cor)
-save_string = cor.to_string(header=False, index=False)
+# save_string = cor.to_string(header=False, index=False)
 
 # with open('korelacja.txt', 'w') as f:
 #     f.write(save_string)
